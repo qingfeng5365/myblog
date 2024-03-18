@@ -1,0 +1,36 @@
+baseURL = 'https://blog.eilhyo.com/'
+languageCode = 'en-us'
+title = 'My Blog'
+theme = 'ananke'
+
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
+Paginate = 3
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[languages]
+
+  [languages.en]
+    title = "Blog"
+    weight = 1
+    contentDir = "content/en"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  text_color = ""
+  author = ""
+  favicon = ""
+  site_logo = ""
+  description = "My hugo site"
+  # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-black"
+  recent_posts_number = 3
+
+[[params.ananke_socials]]
+name = "github"
+url = "https://github.com/qingfeng5365"
