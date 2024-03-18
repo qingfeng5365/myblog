@@ -1,7 +1,7 @@
 baseURL = 'https://blog.eilhyo.com/'
 languageCode = 'en-us'
 title = 'My Blog'
-theme = 'ananke'
+theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
