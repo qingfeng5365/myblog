@@ -42,3 +42,4 @@ sudo cp redis.conf /etc/redis/6379.conf
 sudo update-rc.d redis_6379 defaults
 sudo /etc/init.d/redis_6379 start
 ```
+{{< giscus >}}
