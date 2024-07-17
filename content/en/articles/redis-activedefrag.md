@@ -2,7 +2,7 @@
 title = 'Redis Enables Activedefrag'
 date = 2024-07-14T04:49:57-04:00
 description = ""
-tags = ["redis","memo"]
+tags = ["redis"]
 draft = false
 +++
 
