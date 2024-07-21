@@ -1,6 +1,6 @@
 +++
 title = 'Take a Btrfs Snapshot'
-date = 2024-07-20T04:49:57-04:00
+date = 2024-07-21T04:49:57-04:00
 description = ""
 tags = ["COW","btrfs"]
 draft = true
@@ -27,36 +27,28 @@ sda      8:0    0 465.8G  0 disk
 zram0  253:0    0   1.8G  0 disk [SWAP]
 $ df -T
 文件系统        类型         1K的块      已用       可用  已用% 挂载点
-udev           devtmpfs   1852436        0   1852436    0% /dev
-tmpfs          tmpfs       379764     1688    378076    1% /run
 /dev/sda3      btrfs    486384640 25510416 459792496    6% /
-tmpfs          tmpfs      1898800        0   1898800    0% /dev/shm
-tmpfs          tmpfs         5120       12      5108    1% /run/lock
 /dev/sda2      ext2        983476   291508    641948   32% /boot
 /dev/sda1      vfat        997432     5972    991460    1% /boot/efi
-tmpfs          tmpfs       379760       92    379668    1% /run/user/1000
 ```
-2. **Mount**: 
+2. **Mount and Snapshot**: 
 ```
-sudo mount -o subvol=/ /dev/sda3 /mnt
-ls /mnt -a
+$ sudo mount -o subvol=/ /dev/sda3 /mnt
+$ ls /mnt -a
 . .. @rootfs
-```
-3. **Snapshot**:
-```
-sudo btrfs subvolume snapshot /mnt/@rootfs /mnt/@20240721
-ls /mnt -a
+$ sudo btrfs subvolume snapshot /mnt/@rootfs /mnt/@20240721
+$ ls /mnt -a
 . .. @rootfs @20240721
-sudo btrfs subvolume list /
+$ sudo btrfs subvolume list /
 ID 265 gen 29588 top level 5 path @rootfs
 ID 266 gen 26787 top level 5 path @20240717
 ```
 3. **Delete**:
 ```
-sudo btrfs subvolume get-default /
+$ sudo btrfs subvolume get-default /
 ID 265 gen 29588 top level 5 path @rootfs
-sudo btrfs subvolume set-default 266 /
-sudo btrfs subvolume delete /mnt/@rootfs
+$ sudo btrfs subvolume set-default 266 /
+$ sudo btrfs subvolume delete /mnt/@rootfs
 ```
 4. **Recovery**:
 ```
