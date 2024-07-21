@@ -3,7 +3,7 @@ title = 'Take a Btrfs Snapshot'
 date = 2024-07-21T04:49:57-04:00
 description = ""
 tags = ["COW","btrfs"]
-draft = true
+draft = false
 +++
 
 System snapshot is a crucial tool for data protection and system recovery. Today, I will start with COW file system, introduce four key features of Btrfs, and explain how to use Btrfs to take snapshots of your system.
