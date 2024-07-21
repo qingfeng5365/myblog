@@ -18,27 +18,44 @@ While ext4 is a mature and reliable filesystem with widespread use, Btrfs offers
 ## Take a Btrfs Snapshot
 1. **Prerequisites**: 
 ```
-lsblk
-
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0 465.8G  0 disk
+├─sda1   8:1    0   976M  0 part /boot/efi
+├─sda2   8:2    0   977M  0 part /boot
+└─sda3   8:3    0 463.9G  0 part /
+zram0  253:0    0   1.8G  0 disk [SWAP]
+$ df -T
+文件系统        类型         1K的块      已用       可用  已用% 挂载点
+udev           devtmpfs   1852436        0   1852436    0% /dev
+tmpfs          tmpfs       379764     1688    378076    1% /run
+/dev/sda3      btrfs    486384640 25510416 459792496    6% /
+tmpfs          tmpfs      1898800        0   1898800    0% /dev/shm
+tmpfs          tmpfs         5120       12      5108    1% /run/lock
+/dev/sda2      ext2        983476   291508    641948   32% /boot
+/dev/sda1      vfat        997432     5972    991460    1% /boot/efi
+tmpfs          tmpfs       379760       92    379668    1% /run/user/1000
 ```
 2. **Mount**: 
 ```
 sudo mount -o subvol=/ /dev/sda3 /mnt
-ls /mnt
+ls /mnt -a
 . .. @rootfs
 ```
 3. **Snapshot**:
 ```
 sudo btrfs subvolume snapshot /mnt/@rootfs /mnt/@20240721
-ls /mnt
+ls /mnt -a
 . .. @rootfs @20240721
 sudo btrfs subvolume list /
-
+ID 265 gen 29588 top level 5 path @rootfs
+ID 266 gen 26787 top level 5 path @20240717
 ```
 3. **Delete**:
 ```
 sudo btrfs subvolume get-default /
-sudo btrfs subvolume set-default /
+ID 265 gen 29588 top level 5 path @rootfs
+sudo btrfs subvolume set-default 266 /
 sudo btrfs subvolume delete /mnt/@rootfs
 ```
 4. **Recovery**:
@@ -50,10 +67,11 @@ mount --bind /proc /mnt/proc
 mount --bind /sys /mnt/sys
 chroot /mnt
 mount -o subvol=/ /dev/sda3 /mnt
-update-grub
 mount -av
+update-grub
 reboot
 ```
 ## Links
 1. https://blog.fernvenue.com/archives/how-to-make-btrfs-snapshot/
+
 {{< giscus >}}
