@@ -8,6 +8,7 @@ draft = false
 
 ## html01
 
+```html
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -199,6 +200,7 @@ draft = false
 
 ## html02
 
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -333,6 +335,7 @@ draft = false
 
 ## html03
 
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
