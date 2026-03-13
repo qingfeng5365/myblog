@@ -1,7 +1,7 @@
 ---
 title: 'Contact'
 description: 'Technology, Literature, Philosophy'
-featured_image: '/images/neom-unsplash.jpg'
+featured_image: 'https://myblog-1id.pages.dev/images/neom-unsplash.jpg'
 # omit_header_text: true
 # description: I would love to hear from you
 # type: page
